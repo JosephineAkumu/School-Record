@@ -1,0 +1,73 @@
+
+
+  <nb-layout-column>
+    <nav class="navbar navbar-expand-lg" style="background-color: #008080">
+      <a class="navbar-brand">School Records</a>
+    
+      <div id="navbarNav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/record-list"
+              >Show Records</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/add-record"
+              >Add Record</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+    
+  </nb-layout-column>
+  <div class="row  mt-5  cr">
+    <div class="col-md-6" style="text-align: center">
+    <h2>Update a Record</h2>
+  </div>
+  <div class="row" style="display: flex; justify-content: center;">
+    <div class="col-md-6" style="align-items: center;">
+    <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+      <div class="form-group">
+        <label>Votehead</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Income</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="price"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Expenditure</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="description"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <div class ="btn-left">
+        <button class="btn btn-info btn-block" type="submit">Update</button>
+      </div>
+      </div>
+     
+    </form>
+  </div>
+</div>
+<nb-layout-footer fixed>
+  
+  </nb-layout-footer>

@@ -1,0 +1,50 @@
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Yinka Enoch Adedokun">
+	<title>Login Page</title>
+</head>
+<body class="coverbd">
+	<!-- Main Content -->
+	<div class="container-fluid centerbtn" style="padding-top: 150px;">
+		<div class="row main-content bg-success text-center" style="height: 400px;">
+			<div class="col-md-4 text-center company__info">
+				<span class="company__logo"><h2><span class="fa fa-android"></span></h2></span>
+			
+			</div>
+			<div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+				<div class="container-fluid">
+					<div class="row">
+						<h2>Log In</h2>
+					</div>
+					<div class="row">
+						<form control="" class="form-group" (ngSubmit)="onlogin()">
+							<div class="row">
+								<input type="text" name="username" id="username" class="form__input" placeholder="Username">
+							</div>
+							<div class="row">
+								<!-- <span class="fa fa-lock"></span> -->
+								<input type="password" name="password" id="password" class="form__input" placeholder="Password">
+							</div>
+							<!-- <div class="row">
+								<input type="checkbox" name="remember_me" id="remember_me" class="">
+								<label for="remember_me">Remember Me!</label>
+							</div> -->
+							<div class="row">
+                                <div class="centerbtn"><input type="submit" value="Submit" class="btn"></div>
+								
+							</div>
+						</form>
+					</div>
+					<div class="row">
+						<p>Don't have an account? <a href="#">Register Here</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer -->
+	<!-- <div class="container-fluid text-center footer">
+	<p></p>
+	</div> -->
+</body>

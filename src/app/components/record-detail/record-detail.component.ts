@@ -1,14 +1,14 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CrudService } from './../../service/crud.service';
+import { CrudService } from '../../service/crud.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
-  selector: 'app-book-detail',
-  templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.scss'],
+  selector: 'app-record-detail',
+  templateUrl: './record-detail.component.html',
+  styleUrls: ['./record-detail.component.scss'],
 })
-export class BookDetailComponent implements OnInit {
+export class RecordDetailComponent implements OnInit {
   getId: any;
   updateForm: FormGroup;
 
@@ -42,11 +42,14 @@ export class BookDetailComponent implements OnInit {
     this.crudService.updateBook(this.getId, this.updateForm.value).subscribe(
       () => {
         console.log('Data updated successfully!');
-        this.ngZone.run(() => this.router.navigateByUrl('/books-list'));
+        this.ngZone.run(() => this.router.navigateByUrl('/record-list'));
       },
       (err) => {
         console.log(err);
       }
     );
+  }
+  logout(){
+    this.ngZone.run(() => this.router.navigateByUrl('/record-list'))
   }
 }

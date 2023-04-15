@@ -1,0 +1,147 @@
+
+<!-- <nb-layout> -->
+
+  <!-- <nb-layout-header fixed>
+  </nb-layout-header> -->
+
+  <nb-layout-column>
+    <nav class="navbar navbar-expand-lg" style="background-color: #008080">
+      <a class="navbar-brand">School Records</a>
+    
+      <div id="navbarNav" class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/record-list"
+              >Show Records</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="/add-record"
+              >Add Record</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    
+  </nb-layout-column>
+
+  <!-- <nb-layout-footer fixed>
+  </nb-layout-footer> -->
+
+<!-- </nb-layout> -->
+
+<div class="row  mt-5  cr">
+  <div class="col-md-6" style="text-align: center">
+  <h2>Create Records</h2>
+</div>
+<div class="row" style="display: flex; justify-content: center;">
+  <div class="col-md-6" style="align-items: center;">
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label >Votehead</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="name"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Income</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="price"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Expenditure</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="description"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <div class="btn-left">
+        <button class="btn btn-info btn-block" type="submit">
+          Create Record
+        </button>
+        </div>
+        <div class="btn-right">
+          <button class="btn btn-primary btn-block" (click)="logout()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+  <!-- <div class="form-group">
+    <button class="btn btn-primary btn-block" (click)="logout()">
+      Go Back
+    </button>
+  </div> -->
+</div>
+
+
+
+
+
+
+
+<!-- <div class="row justify-content-center mt-5">
+  <div class="col-md-4">
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Votehead</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="votehead"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Income</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="income"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Expenditure</label>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="expenditure"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary btn-block" type="submit">
+          Create Record
+        </button>
+      </div>
+    </form>
+  </div>
+</div>  -->
+
+<nb-layout-footer>
+  <nav class="navbar navbar-expand-lg" style="background-color: #008080 ;padding: 200px;"> 
+    <!-- <div style="float: center;">Logout</div> -->
+  </nav>
+
+  </nb-layout-footer>
+

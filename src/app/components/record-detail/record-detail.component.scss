@@ -1,0 +1,20 @@
+// .bdy{
+//     background-color: #008080; 
+// }
+.cr{
+    display: flex;
+//    background-color: #008080;
+   padding-left: 30px;
+   padding-right: 30px;
+   padding: 50px;
+//    float: left;
+   width: 100%;
+   border: 5px;
+   justify-content: center;
+   border-top-right-radius:20px;
+	border-bottom-right-radius:20px;
+}
+.btn-left{
+    padding-top: 10px;
+    float: right;
+}

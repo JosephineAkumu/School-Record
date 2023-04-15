@@ -1,21 +1,23 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { CrudService } from './../../service/crud.service';
+import { CrudService } from '../../service/crud.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { RecordService } from 'src/app/service/record.service ';
 
 @Component({
-  selector: 'app-add-book',
-  templateUrl: './add-book.component.html',
-  styleUrls: ['./add-book.component.scss'],
+  selector: 'app-add-record',
+  templateUrl: './add-record.component.html',
+  styleUrls: ['./add-record.component.scss'],
 })
-export class AddBookComponent implements OnInit {
+export class AddRecordComponent implements OnInit {
   bookForm: FormGroup;
 
   constructor(
     public formBuilder: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
-    private crudService: CrudService
+    private crudService: CrudService,
+    private recordService: RecordService
   ) {
     this.bookForm = this.formBuilder.group({
       name: [''],
@@ -30,11 +32,14 @@ export class AddBookComponent implements OnInit {
     this.crudService.AddBook(this.bookForm.value).subscribe(
       () => {
         console.log('Data added successfully!');
-        this.ngZone.run(() => this.router.navigateByUrl('/books-list'));
+        this.ngZone.run(() => this.router.navigateByUrl('/record-list'));
       },
       (err) => {
         console.log(err);
       }
     );
+  }
+  logout(){
+    this.ngZone.run(() => this.router.navigateByUrl('/record-list'))
   }
 }
