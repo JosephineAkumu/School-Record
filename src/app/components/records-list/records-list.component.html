@@ -38,7 +38,9 @@
   <div class="table-responsive">
     <table class="table table-bordered">
       <thead>
+        
         <tr>
+          <th>#</th>
           <th scope="col">Votehead</th>
           <th scope="col">Income</th>
           <th scope="col">Expenditure</th>
@@ -47,6 +49,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let book of Books; let i = index">
+          <td>{{i +1}}</td>
           <td>{{ book.name }}</td>
           <td>{{ book.price }}</td>
           <td>{{ book.description }}</td>
