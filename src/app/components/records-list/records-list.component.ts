@@ -15,11 +15,22 @@ export class RecordsListComponent implements OnInit {
     private ngZone: NgZone,
     private router:Router) {}
 
-  ngOnInit(): void {
-    this.crudService.GetBooks().subscribe((res) => {
-      console.log(res);
-      this.Books = res;
-    });
+ ngOnInit(): void {
+  this.getBooks();
+    // this.crudService.GetBooks().subscribe((res) => {
+    //   console.log(res);
+    //   this.Books = await this.crudService.GetBooks();
+    // });
+  }
+  //  getBooks(){
+  //   this.crudService.GetBooks().subscribe((res) => {
+  //       console.log(res);
+  //       this.Books =  this.crudService.GetBooks();
+  //     });
+  // }
+    async getBooks(){
+      
+    this.Books = await this.crudService.GetBooks();
   }
 
   delete(id: any, i: any) {

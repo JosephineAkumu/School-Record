@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Book } from './Book';
 import { catchError, map } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { Observable, firstValueFrom, throwError } from 'rxjs';
 import {
   HttpClient,
   HttpHeaders,
@@ -29,19 +29,35 @@ export class CrudService {
   }
 
   // Get all objects
-  GetBooks() {
-    return this.httpClient.get(`${this.REST_API}`);
+  // GetBooks() {
+  //   return this.httpClient.get(`${this.REST_API}`);
+  // }
+  async GetBooks():Promise<Book[]> {
+    const res= await firstValueFrom( this.httpClient.get(`${this.REST_API}`));
+    return res as Book[] ;
   }
 
   // Get single object
-  GetBook(id: any): Observable<any> {
+  // GetBook(id: any): Observable<any> {
+  //   let API_URL = `${this.REST_API}/read-book/${id}`;
+  //   return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
+  //     map((res: any) => {
+  //       return res || {};
+  //     }),
+  //     catchError(this.handleError)
+  //   );
+  // }
+  async GetBook(id: any): Promise<Book> {
     let API_URL = `${this.REST_API}/read-book/${id}`;
-    return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
-      map((res: any) => {
-        return res || {};
-      }),
-      catchError(this.handleError)
-    );
+    const res= await firstValueFrom(this.httpClient.get(API_URL, { headers: this.httpHeaders }));
+   
+    return res as Book;
+    // return this.httpClient.get(API_URL, { headers: this.httpHeaders }).pipe(
+    //   map((res: any) => {
+    //     return res || {};
+    //   }),
+    //   catchError(this.handleError)
+    // );
   }
 
   // Update
@@ -51,6 +67,7 @@ export class CrudService {
       .put(API_URL, data, { headers: this.httpHeaders })
       .pipe(catchError(this.handleError));
   }
+  
 
   // Delete
   deleteBook(id: any): Observable<any> {

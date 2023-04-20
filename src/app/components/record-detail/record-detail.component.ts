@@ -2,6 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CrudService } from '../../service/crud.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { Book } from 'src/app/service/Book';
 
 @Component({
   selector: 'app-record-detail',
@@ -11,6 +12,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class RecordDetailComponent implements OnInit {
   getId: any;
   updateForm: FormGroup;
+  book!:Book;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -21,13 +23,14 @@ export class RecordDetailComponent implements OnInit {
   ) {
     this.getId = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.crudService.GetBook(this.getId).subscribe((res) => {
-      this.updateForm.setValue({
-        name: res['name'],
-        price: res['price'],
-        description: res['description'],
-      });
-    });
+    // this.crudService.GetBook(this.getId).subscribe((res) => {
+    //   this.updateForm.setValue({
+    //     name: res['name'],
+    //     price: res['price'],
+    //     description: res['description'],
+    //   });
+    // });
+
 
     this.updateForm = this.formBuilder.group({
       name: [''],
@@ -36,8 +39,19 @@ export class RecordDetailComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getBook();
+  }
 
+  async getBook(){
+    this.book=await this.crudService.GetBook(this.getId);
+    this.updateForm.setValue({
+      name:this.book.name,
+      price: this.book.price,
+      description: this.book.description,
+    });
+ 
+  }
   onUpdate(): any {
     this.crudService.updateBook(this.getId, this.updateForm.value).subscribe(
       () => {

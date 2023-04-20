@@ -24,7 +24,11 @@ app.use(
     extended: false,
   })
 );
-app.use(cors());
+app.use(cors(
+//   {
+//   origin:"http://localhost:4200"
+// }
+));
 
 // Static directory path
 app.use(
@@ -43,6 +47,11 @@ app.listen(port, () => {
 
 // 404 Handler
 app.use((req, res, next) => {
+  // res.header("Access-Control-Allow-Origin", "http://localhost:4200/");
+  //   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+  //   res.header('Access-Control-Allow-Credentials', true);
+  //   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+
   next(createError(404));
 });
 
